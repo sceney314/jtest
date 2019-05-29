@@ -1,7 +1,8 @@
 package patten.proxy.cglib;
 
 public class Hello {
-    public void sayHello(){
+    public String sayHello(){
         System.out.println("hello world!");
+        return "hello world!";
     }
 }
