@@ -17,6 +17,6 @@ public class HelloFilter implements CallbackFilter {
             System.out.println("*****  i don't know do what");
             System.out.println("=====> After filter:" + method.getName());
         }
-        return 0;
+        return 2;
     }
 }

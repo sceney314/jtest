@@ -12,9 +12,9 @@ public class Client {
     public static void main(String[] args) {
         Enhancer enhancer = new Enhancer();
         enhancer.setSuperclass(Hello.class);
-        Callback[] callbacks = new Callback[]{new HelloInterceptor(), new TargetResultFixed()};
+        Callback[] callbacks = new Callback[]{new HelloInterceptor(), new HelloInterceptor2(), new TargetResultFixed()};
         enhancer.setCallbacks(callbacks);
-        enhancer.setCallbackTypes(new Class[]{HelloInterceptor.class, TargetResultFixed.class});
+//        enhancer.setCallbackTypes(new Class[]{HelloInterceptor.class, TargetResultFixed.class});
 
 //        enhancer.setCallback(new TargetResultFixed());
 //        enhancer.setCallbackType(TargetResultFixed.class);

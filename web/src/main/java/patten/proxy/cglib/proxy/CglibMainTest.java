@@ -2,11 +2,6 @@ package patten.proxy.cglib.proxy;
 
 import patten.proxy.cglib.CglibProxy;
 
-/**
- * Copyright (C), 2015-2019
- * Date:     2019-05-29 11:23
- * Description:
- */
 public class CglibMainTest {
     public static void main(String[] args) {
         // 生成 Cglib 代理类
@@ -14,5 +9,6 @@ public class CglibMainTest {
         // 调用相关方法
         engineerProxy.eat();
         engineerProxy.work();
+        engineerProxy.pay();
     }
 }

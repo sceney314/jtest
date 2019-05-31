@@ -15,4 +15,8 @@ public class Engineer {
     private void play() {
         System.out.println("this engineer is playing game");
     }
+
+    protected void pay(){
+        System.out.println("pay off a");
+    }
 }
