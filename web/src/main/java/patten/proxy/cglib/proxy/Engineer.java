@@ -1,4 +1,4 @@
-package patten.proxy.cglib;
+package patten.proxy.cglib.proxy;
 
 public class Engineer {
     // 可以被代理

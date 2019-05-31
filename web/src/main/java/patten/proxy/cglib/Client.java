@@ -15,9 +15,16 @@ public class Client {
         Callback[] callbacks = new Callback[]{new HelloInterceptor(), new TargetResultFixed()};
         enhancer.setCallbacks(callbacks);
         enhancer.setCallbackTypes(new Class[]{HelloInterceptor.class, TargetResultFixed.class});
+
+//        enhancer.setCallback(new TargetResultFixed());
+//        enhancer.setCallbackType(TargetResultFixed.class);
+
         enhancer.setCallbackFilter(new HelloFilter());
         Hello hello = (Hello) enhancer.create();
-        System.out.println(hello.sayHello());
+        hello.sayHello();
+
+        System.out.println("--------------");
+        System.out.println(hello.hashCode());
 
 //        byte[] classFile = ProxyGenerator.generateProxyClass("proxy.Hello", hello.getClass().getInterfaces());
 //        String path = "/Users/king/Data/workspace/jtest/web/src/main/java/patten/proxy/cglib/ssss.class";

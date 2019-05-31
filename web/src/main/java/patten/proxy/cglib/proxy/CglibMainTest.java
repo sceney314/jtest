@@ -1,4 +1,6 @@
-package patten.proxy.cglib;
+package patten.proxy.cglib.proxy;
+
+import patten.proxy.cglib.CglibProxy;
 
 /**
  * Copyright (C), 2015-2019
@@ -11,5 +13,6 @@ public class CglibMainTest {
         Engineer engineerProxy = (Engineer) CglibProxy.getProxy(new Engineer());
         // 调用相关方法
         engineerProxy.eat();
+        engineerProxy.work();
     }
 }
