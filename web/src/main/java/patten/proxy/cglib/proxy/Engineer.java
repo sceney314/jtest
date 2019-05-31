@@ -16,7 +16,14 @@ public class Engineer {
         System.out.println("this engineer is playing game");
     }
 
-    protected void pay(){
-        System.out.println("pay off a");
+    public String pay(String name){
+        System.out.println("pay off " + name);
+        return name;
     }
+
+    public int age(int age){
+        System.out.println("age=" + age);
+        return age;
+    }
+
 }

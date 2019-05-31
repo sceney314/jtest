@@ -9,6 +9,6 @@ public class CglibMainTest {
         // 调用相关方法
         engineerProxy.eat();
         engineerProxy.work();
-        engineerProxy.pay();
+        engineerProxy.pay("sss");
     }
 }
