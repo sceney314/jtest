@@ -27,6 +27,10 @@ public class LeanTest {
         ss.add(3);
 
         System.out.println(ss.subList(0, 3));
+
+        String ssd = "zhangsan";
+        System.out.println(ssd.replace("san", "si"));
+        System.out.println(ssd.substring(1));
     }
 
 }
