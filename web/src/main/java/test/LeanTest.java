@@ -31,6 +31,13 @@ public class LeanTest {
         String ssd = "zhangsan";
         System.out.println(ssd.replace("san", "si"));
         System.out.println(ssd.substring(1));
+
+        String key = "aa";
+        char[] chars = key.toCharArray();
+        System.out.println(chars);
+
+        Character hc = '\0';
+        System.out.println(hc.toString().getBytes());
     }
 
 }
