@@ -1,6 +1,7 @@
 package test;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -38,6 +39,14 @@ public class LeanTest {
 
         Character hc = '\0';
         System.out.println(hc.toString().getBytes());
+
+        String name = "1112";
+        String name2 = null;
+        Date date = new Date();
+        Date date2 = new Date();
+
+        System.out.println(name.equalsIgnoreCase(name2));
+        System.out.println(date.compareTo(date2) <= 0);
     }
 
 }
