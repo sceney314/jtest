@@ -8,7 +8,7 @@ import java.util.function.Function;
 
 /**
  * Copyright (C), 2015-2019
- * Date:     2019-06-06 10:06
+ * DateTest:     2019-06-06 10:06
  * Description:
  */
 public class FunctionTest {

@@ -2,7 +2,7 @@ package patten.proxy.stackproxy;
 
 /**
  * Copyright (C), 2015-2019
- * Date:     2019-05-29 11:24
+ * DateTest:     2019-05-29 11:24
  * Description:
  */
 public class ProxyImage implements Image{

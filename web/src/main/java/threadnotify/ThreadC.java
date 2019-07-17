@@ -2,7 +2,7 @@ package threadnotify;
 
 /**
  * Copyright (C), 2015-2019
- * Date:     2019-06-24 10:52
+ * DateTest:     2019-06-24 10:52
  * Description:
  */
 public class ThreadC extends Thread {

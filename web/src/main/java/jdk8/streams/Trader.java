@@ -2,7 +2,7 @@ package jdk8.streams;
 
 /**
  * Copyright (C), 2015-2019
- * Date:     2019-06-10 17:10
+ * DateTest:     2019-06-10 17:10
  * Description:
  */
 public class Trader {

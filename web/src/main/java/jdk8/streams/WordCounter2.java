@@ -5,7 +5,7 @@ import java.util.function.Consumer;
 
 /**
  * Copyright (C), 2015-2019
- * Date:     2019-06-12 20:26
+ * DateTest:     2019-06-12 20:26
  * Description:
  */
 public class WordCounter2 implements Spliterator<Character> {

@@ -1,52 +1,71 @@
 package test;
 
+import com.alibaba.fastjson.JSON;
+import lombok.Data;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 /**
  * Copyright (C), 2015-2019
- * Date:     2019-06-12 17:05
+ * DateTest:     2019-06-12 17:05
  * Description:
  */
 public class LeanTest {
 
     public static void main(String[] args) {
-        String binary = Long.toBinaryString(253402271999999L);
-        System.out.println(binary);
-        System.out.println(binary.length());
+        List<String> ids = new ArrayList<>();
+        ids.add("a");
+        ids.add("b");
+        ids.add("c");
+        ids.add("d");
+        for (int i = 0; i < 4; i++){
+            System.out.println(ids.remove(0));
+        }
 
 
-        System.out.println(Long.MAX_VALUE);
-        System.out.println((Long.MAX_VALUE + "").length());
-        System.out.println(Long.toBinaryString(Long.MAX_VALUE));
-        System.out.println(Long.toBinaryString(Long.MAX_VALUE).length());
 
-        List<Integer> ss = new ArrayList<>();
-        ss.add(1);
-        ss.add(2);
-        ss.add(3);
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date now = new Date();
+        System.out.println(format.format(now));
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(now);
+        cal.add(Calendar.MINUTE, -1);
+        System.out.println(format.format(cal.getTime()));
+        System.out.println(cal.getTime().compareTo(now));
 
-        System.out.println(ss.subList(0, 3));
+        Peson peson = new Peson();
+        peson.setName("张三");
+        peson.setBirthday(new Date());
 
-        String ssd = "zhangsan";
-        System.out.println(ssd.replace("san", "si"));
-        System.out.println(ssd.substring(1));
+        String json = "{\"birthday\":1562055138,\"name\":\"张三\"}";
+        Peson peson1 = JSON.parseObject(json, Peson.class);
+        System.out.println(peson1);
 
-        String key = "aa";
-        char[] chars = key.toCharArray();
-        System.out.println(chars);
+        Student student = new Student();
+        student.setName("张三");
+        student.setNumber("1");
+        student.setSchool("哄时代峰峻啦");
 
-        Character hc = '\0';
-        System.out.println(hc.toString().getBytes());
-
-        String name = "1112";
-        String name2 = null;
-        Date date = new Date();
-        Date date2 = new Date();
-
-        System.out.println(name.equalsIgnoreCase(name2));
-        System.out.println(date.compareTo(date2) <= 0);
+        try {
+            Student nstu = (Student)student.clone();
+            nstu.setSchool("sjfldfs");
+            nstu.setNumber("2");
+            nstu.setName("李四");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        System.out.println(student);
     }
 
+}
+
+@Data
+class Peson{
+    private Date birthday;
+
+    private String name;
 }
