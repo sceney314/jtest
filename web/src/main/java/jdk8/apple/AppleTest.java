@@ -3,6 +3,7 @@ package jdk8.apple;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -58,6 +59,7 @@ public class AppleTest {
         apple8.setColor("red");
         apple8.setWeight(160);
         apples.add(apple8);
+
         List<Apple> greenApples = FilterApple.filterApples(apples, Apple::isGreenApple);
         System.out.println("greenApples:" + greenApples.toString());
         List<Apple> bigApples = FilterApple.filterApples(apples, Apple::isHeavyApple);
@@ -67,5 +69,7 @@ public class AppleTest {
 
         List<Apple> tagetApple = apples.stream().filter((Apple a) -> a.getWeight() > 200).collect(Collectors.toList());
         System.out.println("tagetApple:" + tagetApple.toString());
+
+
     }
 }

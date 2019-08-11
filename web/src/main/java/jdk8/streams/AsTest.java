@@ -1,15 +1,35 @@
 package jdk8.streams;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.stream.Collectors;
 
 /**
  * Copyright (C), 2015-2019
- * DateTest:     2019-06-06 20:05
+  * DateTest:     2019-06-06 20:05
  * Description:
  */
 public class AsTest {
     public static void main(String[] args) {
+        String asd = "svbd";
+        System.out.println(asd.substring(1));
+        Map<Integer, String> codeMap = new HashMap<>();
+        codeMap.put(1, "a");
+        codeMap.put(2, "b");
+        System.out.println(codeMap.containsKey(null));
+
+        List<String> abc = new ArrayList<>();
+        abc.add("a");
+        abc.add("b");
+        abc.add("c");
+        System.out.println(abc.stream().collect(Collectors.joining(",")));
+        System.out.println(String.join(",", abc));
+
+        SimpleDateFormat format = new SimpleDateFormat("MM月dd日 ahh:mm");
+        System.out.println(format.format(new Date(1564970522000L)));
+
+
+
         Integer[] n = new Integer[]{1,3,54,67,7,4,86,9};
         List<Integer> numbers = Arrays.asList(n);
         int sum = numbers.stream().reduce(0, (a, b) -> a + b);
@@ -37,6 +57,14 @@ public class AsTest {
                 new Transaction(mario, 2012, 700),
                 new Transaction(alan, 2012, 950)
         );
+
+        Transaction ttt = transactions.stream().filter(tran -> tran.getValue() < 300).max(Comparator.comparing(Transaction::getValue)).get();
+        System.out.println("test tt" + ttt);
+
+
+
+
+        Map<Integer, Transaction> map = transactions.stream().collect(Collectors.toMap(Transaction::getValue, (Transaction tran) -> tran));
 
         List<Transaction> trans = transactions.stream()
                 .filter(transaction -> transaction.getYear() == 2011)

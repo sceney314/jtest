@@ -3,6 +3,7 @@ package jdk8.riqi;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.Month;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoField;
 
 /**
@@ -37,6 +38,12 @@ public class LocalDateTest {
 
         boolean leap = date.isLeapYear();
         System.out.println(leap);
+
+//        LocalDate ld = LocalDate.parse("2019-07-29 12:45:56", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        LocalDate ld = LocalDate.ofEpochDay(System.currentTimeMillis());
+        System.out.println(ld.getYear());
+        System.out.println(ld.getMonthValue());
+        System.out.println(ld.getDayOfMonth());
 
     }
 }

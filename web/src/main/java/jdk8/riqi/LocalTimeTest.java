@@ -10,7 +10,7 @@ import java.time.LocalTime;
  */
 public class LocalTimeTest {
     public static void main(String[] args) {
-        LocalTime time = LocalTime.of(13, 45, 20);
+        LocalTime time = LocalTime.of(13, 2, 20);
         System.out.println(time);
 
         int hour = time.getHour();

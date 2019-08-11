@@ -6,6 +6,12 @@ import java.util.Date;
 public class DateTest {
 
     public static void main(String[] args) {
+        Date now = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("MM-dd HH:mm");
+        System.out.println(format.format(now));
+
+
+
         String ss = "2019-04-02 23:12:35";
         Date date = parseDateTime(ss);
         System.out.println(datetimeFormat(date));
