@@ -1,11 +1,8 @@
 package jdk8.riqi;
 
-import com.google.common.collect.Lists;
-import lombok.Data;
-
 import java.time.*;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoField;
-import java.util.*;
 
 /**
  * Copyright (C), 2015-2019
@@ -33,31 +30,13 @@ public class LocalDateTimeTest {
         System.out.println(Instant.now().get(ChronoField.MILLI_OF_SECOND));
         System.out.println(Instant.now());
 
-//        Map<String, DD> zmmap = new HashMap<>();
-//        zmmap.put("a", new DD("a"));
-//        zmmap.put("d", new DD("d"));
-//        zmmap.put("b", new DD("b"));
-//        zmmap.put("cd", new DD("c"));
-//
-//        Set<String> ss = new HashSet<>();
-//        ss.add("a");
-//        ss.add("b");
-//        ss.add("c");
-//        ss.add("d");
-//
-//        zmmap.keySet().removeAll(ss);
-//        System.out.println(zmmap);
-//        List<DD> dd = Lists.newArrayList(zmmap.values());
-//        System.out.println(dd);
-    }
-}
+        LocalDateTime ldt = LocalDateTime.now();
+        System.out.println(ldt);
+        LocalDateTime ld2 = ldt.plusDays(22L).withHour(15).withMinute(0).withSecond(0);
+        System.out.println(ld2);
 
-
-@Data
-class DD{
-    private String name;
-
-    public DD(String name) {
-        this.name = name;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime dateTime = LocalDateTime.parse("2019-09-09 23:45:23", formatter);
+        System.out.println(dateTime);
     }
 }

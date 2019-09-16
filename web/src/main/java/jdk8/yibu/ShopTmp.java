@@ -1,8 +1,8 @@
 package jdk8.yibu;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.*;
 import java.util.concurrent.*;
 import java.util.stream.Collectors;
 
@@ -41,12 +41,15 @@ public class ShopTmp {
 //            throw new RuntimeException(e);
 //        }
 
+        LocalDate today = LocalDate.now();
+        System.out.println(today);
+        System.out.println(today.plusDays(15));
 
         List<ShopTmp> shopTmps = Arrays.asList(new ShopTmp("BestPrice"),
                 new ShopTmp("LetsSaveBig"),
                 new ShopTmp("MyFavoriteShop"),
                 new ShopTmp("MyFavoriteShop1"),
-                new ShopTmp("MyFavoriteShop2"),
+                new ShopTmp("Shop2"),
                 new ShopTmp("MyFavoriteShop3"),
                 new ShopTmp("MyFavoriteShop4"),
                 new ShopTmp("MyFavoriteShop5"),
@@ -54,9 +57,28 @@ public class ShopTmp {
                 new ShopTmp("MyFavoriteShop7"),
                 new ShopTmp("BuyItAll"));
 
+        ShopTmp tmp = shopTmps.stream().filter(s -> s.getName().equalsIgnoreCase("MyFavoriteShop4")).findFirst().get();
+        tmp.name = "change";
         System.out.println(getPriceAsync2(shopTmps));
         long retrievalTime = ((System.nanoTime() - start) / 1_000_000);
         System.out.println("Price returned after " + retrievalTime + " msecs");
+
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(new Date());
+        cal.set(Calendar.YEAR, 875999999);
+        cal.set(Calendar.MONTH, 11);
+        cal.set(Calendar.DAY_OF_MONTH, 31);
+        cal.set(Calendar.HOUR_OF_DAY, 23);
+        cal.set(Calendar.MINUTE, 59);
+        cal.set(Calendar.SECOND, 59);
+        cal.set(Calendar.MILLISECOND, 999);
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        System.out.println(format.format(cal.getTime()));
+        System.out.println(cal.getTime().getTime());
+        System.out.println(Long.MAX_VALUE);
+        String bytes = Long.toBinaryString(cal.getTime().getTime());
+        System.out.println(bytes);
+        System.out.println(bytes.length());
 
 
 

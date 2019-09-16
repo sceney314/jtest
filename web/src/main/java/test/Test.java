@@ -3,7 +3,9 @@ package test;
 import com.alibaba.fastjson.JSON;
 import lombok.Data;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.regex.Pattern;
 
 /**
  * @author zhengzp
@@ -28,6 +30,51 @@ public class Test {
                 continue;
             }
         }
+
+        Date date = new Date();
+        String year = "yyyy";
+        String month = "MM";
+        String day = "dd";
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddhhmmssSSS");
+        String DATE_MM_DD_AHH_MM = "MM月dd日 ahh:mm";
+        dateFormat.applyPattern(DATE_MM_DD_AHH_MM);
+        System.out.println(dateFormat.format(date));
+
+
+        System.out.println(dateFormat.format(new Date()));
+        dateFormat.applyPattern(year);
+        System.out.println(dateFormat.format(date));
+        dateFormat.applyPattern(month);
+        String mm = dateFormat.format(date);
+        System.out.println(mm);
+        dateFormat.applyPattern(day);
+        System.out.println(dateFormat.format(date));
+        System.out.println(Integer.valueOf(mm));
+
+        String con = "0";
+        String patten = "\\d+";
+        System.out.println(Pattern.matches(patten, con));
+
+        String sss = "backParam=好友动态推广位保证金&charset=02&ext=eyJtZXJjaGFudElkIjoiODAwMDEwMDAwMDEwMDMxIiwidHlwZSI6IjcyIn0=&merchantId=800010000010031";
+        String[] keys = sss.split("&");
+        Map<String, String> param = new HashMap<>();
+        for (int i = 0; i < keys.length; i++){
+            int first = keys[i].indexOf("=");
+            String key = keys[i].substring(0, first);
+            String value = keys[i].substring(++first);
+            param.put(key, value);
+        }
+
+        System.out.println(param);
+
+        System.out.println(13200L%100L);
+
+        System.out.println(1 ^ 3);
+        System.out.println(2 ^ 3);
+
+        String cons = "08月15日 Pm04:49";
+        System.out.println(cons.toUpperCase().replace("AM", "上午").replace("PM", "下午"));
+
     }
 
     public static boolean isValid(Contract contract, String version){
