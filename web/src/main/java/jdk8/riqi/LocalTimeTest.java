@@ -2,6 +2,7 @@ package jdk8.riqi;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Copyright (C), 2015-2019
@@ -26,6 +27,9 @@ public class LocalTimeTest {
         System.out.println(date);
         LocalTime time1 = LocalTime.parse("13:45:20");
         System.out.println(time1);
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+        System.out.println(LocalTime.parse("13:45:20", formatter));
 
     }
 }
