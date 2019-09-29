@@ -1,10 +1,10 @@
 package patten.builder;
 
 /**
- * @author zhengzp
+ * 产品
  * 2019-09-26 20:37
  */
-public interface Item {
+public interface Product {
     public String name();
     public Packing packing();
     public float price();

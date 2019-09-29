@@ -1,7 +1,7 @@
 package patten.builder;
 
 /**
- * @author zhengzp
+ * 具体建造者
  * 2019-09-26 20:46
  */
 public class ChickenBurger extends Burger{

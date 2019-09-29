@@ -4,30 +4,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author zhengzp
+ * 抽象建造者
  * 2019-09-26 20:48
  */
 public class Meal {
 
-    private List<Item> items = new ArrayList<>();
+    private List<Product> products = new ArrayList<>();
 
-    public void addItem(Item item){
-        items.add(item);
+    public void addProduct(Product product){
+        products.add(product);
     }
 
     public float getCost(){
         float cost = 0.0f;
-        for (Item item : items) {
-            cost += item.price();
+        for (Product product : products) {
+            cost += product.price();
         }
         return cost;
     }
 
-    public void showItems(){
-        for (Item item : items) {
-            System.out.print("Item : "+item.name());
-            System.out.print(", Packing : "+item.packing().pack());
-            System.out.println(", Price : "+item.price());
+    public void showProducts(){
+        for (Product product : products) {
+            System.out.print("Product : "+ product.name());
+            System.out.print(", Packing : "+ product.packing().pack());
+            System.out.println(", Price : "+ product.price());
         }
     }
 

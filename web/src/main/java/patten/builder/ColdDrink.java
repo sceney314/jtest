@@ -1,10 +1,9 @@
 package patten.builder;
 
 /**
- * @author zhengzp
  * 2019-09-26 20:46
  */
-public abstract class ColdDrink implements Item{
+public abstract class ColdDrink implements Product {
     @Override
     public Packing packing() {
         return new Bottle();

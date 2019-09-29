@@ -1,10 +1,9 @@
 package patten.builder;
 
 /**
- * @author zhengzp
  * 2019-09-26 20:39
  */
-public abstract class Burger implements Item {
+public abstract class Burger implements Product {
     @Override
     public Packing packing() {
         return new Wrapper();
