@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Copyright (C), 2015-2019
- * DateTest:     2019-06-19 14:16
- * Description:
+ * 目标
  */
 public class Subject {
     private List<Observer> observers = new ArrayList<>();

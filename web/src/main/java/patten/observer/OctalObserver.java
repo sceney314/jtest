@@ -1,9 +1,7 @@
 package patten.observer;
 
 /**
- * Copyright (C), 2015-2019
- * DateTest:     2019-06-19 14:17
- * Description:
+ * 具体观察者：八进制
  */
 public class OctalObserver extends Observer {
 

@@ -1,9 +1,7 @@
 package patten.observer;
 
 /**
- * Copyright (C), 2015-2019
- * DateTest:     2019-06-19 14:16
- * Description:
+ * 抽象观察者
  */
 public abstract class Observer {
     protected Subject subject;

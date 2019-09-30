@@ -1,9 +1,7 @@
 package patten.observer;
 
 /**
- * Copyright (C), 2015-2019
- * DateTest:     2019-06-19 14:18
- * Description:
+ * 具体观察者：十六进制
  */
 public class HexaObserver extends Observer {
 
