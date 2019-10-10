@@ -16,6 +16,6 @@ public class Seller extends Customer {
 
     @Override
     public void receive(String from, String ad) {
-        System.out.println("Seller - " + from + "说: " + ad);
+        System.out.println(from + "说: " + ad);
     }
 }
