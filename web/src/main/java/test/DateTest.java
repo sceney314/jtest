@@ -1,22 +1,16 @@
 package test;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class DateTest {
 
     public static void main(String[] args) {
-        Date now = new Date();
-        SimpleDateFormat format = new SimpleDateFormat("MM-dd HH:mm");
-        System.out.println(format.format(now));
 
-
-
-        String ss = "2019-04-02 23:12:35";
-        Date date = parseDateTime(ss);
-        System.out.println(datetimeFormat(date));
-        System.out.println(dateFormat(parseDate(ss)));
-        System.out.println(timeFormat(parseTime(ss)));
+        System.out.println("    today:" + datetimeFormat(today()));
+        System.out.println("  nextDay:" + datetimeFormat(nextDay()));
+        System.out.println("yesterday:" + datetimeFormat(yesterday()));
     }
 
     public static Date parseDateTime(String date){
@@ -74,6 +68,52 @@ public class DateTest {
     public static String timeFormat(Date date){
         SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
         return dateFormat.format(date);
+    }
+
+    public static Date addDate(Date date, int field, int interval) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(field, interval);
+        return cal.getTime();
+    }
+
+    /**
+     * 获取今日凌晨日期
+     * @return Date
+     */
+    public static Date today(){
+        return dayZeroPoint(new Date());
+    }
+
+    /**
+     * 某天零点
+     * @param date
+     * @return
+     */
+    public static Date dayZeroPoint(Date date){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.set(Calendar.HOUR_OF_DAY, 0);
+        cal.set(Calendar.MINUTE, 0);
+        cal.set(Calendar.SECOND, 0);
+        cal.set(Calendar.MILLISECOND, 0);
+        return cal.getTime();
+    }
+
+    /**
+     * 获取明日凌日期
+     * @return Date
+     */
+    public static Date nextDay(){
+        return addDate(today(), Calendar.DAY_OF_MONTH, 1);
+    }
+
+    /**
+     * 获取昨日凌日期
+     * @return Date
+     */
+    public static Date yesterday() {
+        return addDate(today(), Calendar.DAY_OF_MONTH, -1);
     }
 
 

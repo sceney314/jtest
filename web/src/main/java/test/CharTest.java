@@ -4,6 +4,9 @@ import test.son.Man;
 import test.son.People;
 import test.son.Woman;
 
+import java.util.Calendar;
+import java.util.Date;
+
 /**
  * @author zhengzp
  * 2019-10-15 20:08
@@ -26,5 +29,12 @@ public class CharTest {
         }else{
             System.out.println("女人");
         }
+
+        System.out.println(1 << 1);
+        System.out.println(0 >> 1);
+
+
     }
+
+
 }
