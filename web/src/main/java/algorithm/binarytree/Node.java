@@ -16,9 +16,6 @@ public class Node {
     // 右孩子
     private Node right;
 
-    // 父节点
-    private Node parent;
-
     // 值
     private String data;
 
@@ -28,6 +25,4 @@ public class Node {
     public Node(String data) {
         this.data = data;
     }
-
-
 }
