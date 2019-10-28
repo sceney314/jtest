@@ -1,8 +1,8 @@
 package algorithm.binarytree;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import com.alibaba.fastjson.JSON;
+
+import java.util.*;
 
 /**
  * 二叉树遍历
@@ -41,6 +41,10 @@ public class TreeTest {
         behindRecursive(tree, behindData);
         String behind2 = String.join(",", behindData);
         System.out.println("后序(递归)遍历结果：" + behind2);
+        System.out.println("");
+
+        System.out.println("层次遍历答案：[[\"A\"],[\"B\",\"E\"],[\"C\",\"F\"],[\"D\",\"G\"],[\"H\",\"K\"]]");
+        System.out.println("层次遍历结果：" + JSON.toJSONString(levelTraversing(tree)));
     }
 
     public static Node tree(){
@@ -199,6 +203,44 @@ public class TreeTest {
         behindRecursive(node.getLeft(), data);
         behindRecursive(node.getRight(), data);
         data.add(node.getData());
+    }
+
+    /**
+     * 层级遍历
+     *
+     * @param node 二叉树
+     * @return List
+     */
+    public static List<List<String>> levelTraversing(Node node){
+        if (node == null){
+            return new ArrayList<>();
+        }
+
+        List<List<String>> data = new ArrayList<>();
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(node);
+        while (!queue.isEmpty()){
+            int count = queue.size();
+            List<String> level = new ArrayList<>();
+            while (count > 0){
+                Node temp = queue.peek();
+                queue.poll();
+
+                level.add(temp.getData());
+
+                if(temp.getLeft() != null){
+                    queue.add(temp.getLeft());
+                }
+
+                if(temp.getRight() != null){
+                    queue.add(temp.getRight());
+                }
+                count--;
+            }
+            data.add(level);
+        }
+
+        return data;
     }
 
 
