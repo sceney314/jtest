@@ -9,19 +9,25 @@ import java.util.regex.Pattern;
  */
 public class RegTest {
     public static void main(String[] args) {
-        String regex = "\\d+\\.{0,1}\\d{0,2}";
-        String amount = "345.0";
-        System.out.println(Pattern.matches(regex, amount));
+//        String regex = "\\d+\\.{0,1}\\d{0,2}";
+//        String amount = "345.0";
+//        System.out.println(Pattern.matches(regex, amount));
+//
+//        System.out.println(fen2Yuan(2000_00L));
+//        System.out.println(fen2Yuan(2210L));
+//
+//        Long a = 11L;
+//        Long aa = 12L;
+//        System.out.println(aa.compareTo(a));
+//
+//        String con = "我是汉字 we^";
+//        System.out.println(con.length());
 
-        System.out.println(fen2Yuan(2000_00L));
-        System.out.println(fen2Yuan(2210L));
+        String regex = "1\\d{10}";
+        String phone = "19997494224";
+        System.out.println(Pattern.matches(regex, phone));
 
-        Long a = 11L;
-        Long aa = 12L;
-        System.out.println(aa.compareTo(a));
 
-        String con = "我是汉字 we^";
-        System.out.println(con.length());
     }
 
     /**

@@ -1,7 +1,7 @@
 package algorithm.trietree;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * 字典树
@@ -23,24 +23,39 @@ public class TrieTest {
 
         List<String> blackList = Arrays.asList(blackStr.split(","));
 
-        String dd = "手动阀";
-        System.out.println(dd.charAt(dd.length() - 1));
     }
 
 
     public static void itree(TrieNode tree, String word){
-        if (word == null || word.trim().length() < 1){
+        if (tree == null || word == null || word.trim().length() < 1){
             return;
         }
 
         int i = 0;
         while (i < word.length()){
-            addLeft(tree, word.substring(i, i + 1));
+            addLeft(tree, word.substring(i, i + 1), i);
             i++;
         }
     }
 
-    public static void addLeft(TrieNode tree, String data){
+    public static void addLeft(TrieNode tree, String data, Integer level){
+        if (level < 1){
+            return;
+        }
 
+        Queue<TrieNode> nodes = new LinkedList<>();
+        nodes.add(tree);
+
+        while (!nodes.isEmpty()){
+            int count = nodes.size();
+            List<String> datas = new ArrayList<>();
+            while (count > 0){
+                TrieNode node = nodes.peek();
+                if (node.getLevel().equals(level) && node.getSons() != null && node.getSons().size() > 0){
+                    List<String> sons = node.getSons().stream().map(TrieNode::getValue).collect(Collectors.toList());
+                    datas.addAll(sons);
+                }
+            }
+        }
     }
 }

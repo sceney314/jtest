@@ -12,17 +12,13 @@ import java.util.List;
  */
 @Data
 public class TrieNode {
-    // 有多少单词通过这个节点
-    private Integer num;
 
     private String value;
 
-    private boolean haveSon;
-
-    // 是不是最后一个
-    private boolean isEnd;
-
     // 所有的儿子节点
     private List<TrieNode> sons = new ArrayList<>();
+
+    // 层次
+    private Integer level;
 }
 
