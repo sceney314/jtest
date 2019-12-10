@@ -55,29 +55,22 @@ public class ThreeSum {
                 continue;
             }
             int j = i + 1;
-            int k = nums.length - 1;
-            int next = 0 - nums[i];
+            int k = length - 1;
             while (j < k) {
-                // 去重
-                if (j != i + 1 && nums[j] == nums[j - 1]) {
-                    j++;
-                    continue;
-                }
-                // 去重
-                if (k != nums.length - 1 && nums[k] == nums[k + 1]) {
-                    k--;
-                    continue;
-                }
-                if (nums[j] + nums[k] > next) {
-                    k--;
-                } else if (nums[j] + nums[k] < next) {
-                    j++;
-                } else {
+                int current = nums[j] + nums[k] + nums[i];
+                if (current == 0){
                     List<Integer> tmp = new ArrayList<>();
                     tmp.add(nums[i]);
                     tmp.add(nums[j]);
                     tmp.add(nums[k]);
                     result.add(tmp);
+                    j++;
+                    while (j < k && nums[j] == nums[j - 1]){
+                        j++;
+                    }
+                }else if (current > 0){
+                    k--;
+                }else{
                     j++;
                 }
             }

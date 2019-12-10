@@ -62,6 +62,7 @@ public class FourSum {
             if (max1 < target) {
                 continue;
             }
+
             // 确定第二个
             for (int i = k + 1; i < length - 2; i++) {
                 if (i > k + 1 && nums[i] == nums[i - 1]) {
