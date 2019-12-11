@@ -1,5 +1,9 @@
 package test;
 
+import sun.misc.BASE64Decoder;
+
+import java.nio.charset.Charset;
+
 /**
  * 字符串比较
  *
@@ -8,11 +12,15 @@ package test;
  */
 public class StringTest {
     public static void main(String[] args) {
-        String v1 = "13.2.5";
-        String v2 = "3.2.2";
-
-        System.out.println(v1.compareTo(v2));
-        System.out.println(Integer.MAX_VALUE);
-        System.out.println(Long.MAX_VALUE);
+        Charset utf8 = Charset.forName("UTF-8");
+        BASE64Decoder decoder = new BASE64Decoder();
+        try {
+            String columnName = new String(decoder.decodeBuffer("ZjpjcmVkaXRfaWQ="), utf8);
+            System.out.println(columnName.substring(columnName.indexOf(":") + 1));
+            String data = new String(decoder.decodeBuffer("MTA3MDY5MDQ1Nzg3ODQ5NTY2Nw=="), utf8);
+            System.out.println(data);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }
