@@ -19,6 +19,10 @@ public class ALTest {
         peoples.contains(new People("李四", 3));
 
         System.out.println(peoples);
+
+        int[] testInt = new int[]{1,2,3,4,5,6};
+        System.arraycopy(testInt, 1, testInt, 0, testInt.length - 1);
+        System.out.println(testInt);
     }
 
 }
