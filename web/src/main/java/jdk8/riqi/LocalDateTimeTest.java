@@ -3,6 +3,8 @@ package jdk8.riqi;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoField;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Copyright (C), 2015-2019
@@ -11,32 +13,52 @@ import java.time.temporal.ChronoField;
  */
 public class LocalDateTimeTest {
     public static void main(String[] args) {
-        LocalDate date = LocalDate.of(2019, 6, 18);
-        LocalTime time = LocalTime.of(13, 45, 20);
-        LocalDateTime dt1 = LocalDateTime.of(2019, Month.JUNE, 18, 13, 45, 20);
-        System.out.println(dt1.toString());
-        LocalDateTime dt2 = LocalDateTime.of(date, time);
-        System.out.println(dt2);
-        LocalDateTime dt3 = date.atTime(13, 45, 20);
-        System.out.println(dt3);
-        LocalDateTime dt4 = date.atTime(time);
-        System.out.println(dt4);
-        LocalDateTime dt5 = time.atDate(date);
-        System.out.println(dt5);
+        System.out.println((nextDay().getTime() - System.currentTimeMillis()) / 1000L);
+    }
 
-        Instant instant = Instant.ofEpochSecond(3);
-        System.out.println(Instant.now().get(ChronoField.NANO_OF_SECOND));
-        System.out.println(Instant.now().get(ChronoField.MICRO_OF_SECOND));
-        System.out.println(Instant.now().get(ChronoField.MILLI_OF_SECOND));
-        System.out.println(Instant.now());
+    /**
+     * 获取今日凌晨日期
+     * @return Date
+     */
+    public static Date today(){
+        return dayZeroPoint(new Date());
+    }
 
-        LocalDateTime ldt = LocalDateTime.now();
-        System.out.println(ldt);
-        LocalDateTime ld2 = ldt.plusDays(22L).withHour(15).withMinute(0).withSecond(0);
-        System.out.println(ld2);
+    /**
+     * 某天零点
+     * @param date
+     * @return
+     */
+    public static Date dayZeroPoint(Date date){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.set(Calendar.HOUR_OF_DAY, 0);
+        cal.set(Calendar.MINUTE, 0);
+        cal.set(Calendar.SECOND, 0);
+        cal.set(Calendar.MILLISECOND, 0);
+        return cal.getTime();
+    }
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        LocalDateTime dateTime = LocalDateTime.parse("2019-09-09 23:45:23", formatter);
-        System.out.println(dateTime);
+    /**
+     * 时间增减
+     *
+     * @param date     Date
+     * @param field    int
+     * @param interval int
+     * @return Date
+     */
+    public static Date addDate(Date date, int field, int interval) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(field, interval);
+        return cal.getTime();
+    }
+
+    /**
+     * 获取明日凌日期
+     * @return Date
+     */
+    public static Date nextDay(){
+        return addDate(today(), Calendar.DAY_OF_MONTH, 1);
     }
 }

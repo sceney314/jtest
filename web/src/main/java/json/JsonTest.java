@@ -52,5 +52,8 @@ public class JsonTest {
 
         Msg<Push> msg = JSON.parseObject(json2, new TypeReference<Msg<Push>>(){});
         System.out.println(msg);
+
+        long d = 1080888293005942785L;
+        System.out.println(d % 16);
     }
 }

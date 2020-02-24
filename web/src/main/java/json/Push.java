@@ -1,6 +1,7 @@
 package json;
 
 import lombok.Data;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  * @author zhengzp
@@ -8,6 +9,7 @@ import lombok.Data;
  */
 @Data
 public class Push {
+    @JsonIgnore
     private String content;
 
     private Sms sms;
