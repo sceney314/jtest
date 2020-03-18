@@ -28,6 +28,8 @@ public class CodeTest {
         linkedList.add(1);
 
         String zifu = "1,2,3,4,5";
+        System.out.println(zifu.substring(1));
+        System.out.println(zifu.substring(0, zifu.length() - 1));
         System.out.println(Stream.of(zifu.split(",")).mapToInt(x -> Integer.valueOf(x)).boxed().collect(Collectors.toList()));
         System.out.println(Stream.of(zifu.split(",")).map(x -> Integer.valueOf(x)).collect(Collectors.toList()));
 

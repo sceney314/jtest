@@ -1,0 +1,9 @@
+package leetcode.sortalgorithm;
+
+/**
+ * 快速派去
+ * <p>
+ * 2020-03-17 07:05
+ */
+public class QuickSort {
+}

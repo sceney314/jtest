@@ -1,5 +1,6 @@
 package jdk8.riqi;
 
+import java.sql.Timestamp;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoField;
@@ -13,16 +14,26 @@ import java.util.Date;
  */
 public class LocalDateTimeTest {
     public static void main(String[] args) {
-        System.out.println((nextDay().getTime() - System.currentTimeMillis()) / 1000L);
+//        System.out.println(today().toString());
+//        System.out.println(today().getSecond());
+
+        System.out.println(Timestamp.valueOf(LocalDateTime.now()).getTime());
+        System.out.println(System.currentTimeMillis());
+//        System.out.println(tomorrow().toString());
     }
 
-    /**
-     * 获取今日凌晨日期
-     * @return Date
-     */
-    public static Date today(){
-        return dayZeroPoint(new Date());
+    public static LocalDateTime today(){
+        LocalDate today = LocalDate.now();
+        return LocalDateTime.of(today.getYear(), today.getMonth(), today.getDayOfMonth(), 0, 0, 0);
     }
+
+    public static LocalDateTime tomorrow(){
+        LocalDateTime today = today();
+        return today.plusDays(1L);
+    }
+
+
+
 
     /**
      * 某天零点
@@ -52,13 +63,5 @@ public class LocalDateTimeTest {
         cal.setTime(date);
         cal.add(field, interval);
         return cal.getTime();
-    }
-
-    /**
-     * 获取明日凌日期
-     * @return Date
-     */
-    public static Date nextDay(){
-        return addDate(today(), Calendar.DAY_OF_MONTH, 1);
     }
 }
