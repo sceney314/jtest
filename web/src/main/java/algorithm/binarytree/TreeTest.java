@@ -15,7 +15,7 @@ public class TreeTest {
     public static void main(String[] args) {
         Node tree = tree();
 
-        System.out.println("先序(遍历)遍历答案：A,B,C,D,E,F,G,H,K");
+        System.out.println("先序(遍历)遍历答案：A,B,D,G,C,E,F,H");
         String result = String.join(",", firstTraversing(tree));
         System.out.println("先序(循环)遍历结果：" + result);
         List<String> first = new ArrayList<>();
@@ -24,7 +24,7 @@ public class TreeTest {
         System.out.println("先序(递归)遍历结果：" + result2);
         System.out.println("");
 
-        System.out.println("中序(遍历)遍历答案：B,D,C,A,E,H,G,K,F");
+        System.out.println("中序(遍历)遍历答案：D,B,G,A,E,C,H,F");
         String middle = String.join(",", middleTraversing(tree));
         System.out.println("中序(循环)遍历结果：" + middle);
         List<String> middleData = new ArrayList<>();
@@ -34,7 +34,7 @@ public class TreeTest {
         System.out.println("");
 
 
-        System.out.println("后序(遍历)遍历答案：D,C,B,H,K,G,F,E,A");
+        System.out.println("后序(遍历)遍历答案：D,G,B,E,H,F,C,A");
         String behind = String.join(",", behindTraversing(tree));
         System.out.println("后序(循环)遍历结果：" + behind);
         List<String> behindData = new ArrayList<>();
@@ -43,7 +43,7 @@ public class TreeTest {
         System.out.println("后序(递归)遍历结果：" + behind2);
         System.out.println("");
 
-        System.out.println("层次遍历答案：[[\"A\"],[\"B\",\"E\"],[\"C\",\"F\"],[\"D\",\"G\"],[\"H\",\"K\"]]");
+        System.out.println("层次遍历答案：[[\"A\"],[\"B\",\"C\"],[\"D\",\"G\",\"E\",\"F\"],[\"H\"]]");
         System.out.println("层次遍历结果：" + JSON.toJSONString(levelTraversing(tree)));
     }
 
@@ -56,16 +56,14 @@ public class TreeTest {
         Node f = new Node("F");
         Node g = new Node("G");
         Node h = new Node("H");
-        Node k = new Node("K");
 
         a.setLeft(b);
-        a.setRight(e);
-        b.setRight(c);
-        c.setLeft(d);
-        e.setRight(f);
-        f.setLeft(g);
-        g.setLeft(h);
-        g.setRight(k);
+        a.setRight(c);
+        b.setLeft(d);
+        b.setRight(g);
+        c.setLeft(e);
+        c.setRight(f);
+        f.setLeft(h);
 
         return a;
     }
@@ -206,7 +204,7 @@ public class TreeTest {
     }
 
     /**
-     * 层级遍历
+     * BFS广度优先遍历
      *
      * @param node 二叉树
      * @return List
