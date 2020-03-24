@@ -1,10 +1,8 @@
 package test;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.PriorityQueue;
-import java.util.Queue;
-import java.util.function.ToIntFunction;
+import test.keywords.User;
+
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -13,6 +11,18 @@ import java.util.stream.Stream;
  */
 public class CodeTest {
     public static void main(String[] args) {
+        TreeMap<Integer, Integer> map = new TreeMap<>();
+        TreeSet<Integer> set = new TreeSet<>();
+
+        TISTest tisTest = new TISTest(){};
+        System.out.println(TISTest.Ti.getHello());
+
+        Ice ice = new Ice();
+        HashMap<String, String> sp = new HashMap<>();
+        sp.put("1", "1");
+        sp.put("2", "2");
+
+
         int i = 3, j = 1;
         System.out.println(~i);
         System.out.println(Integer.toBinaryString(~i));
@@ -26,12 +36,13 @@ public class CodeTest {
         System.out.println(-1 >>> 1);
         LinkedList<Integer> linkedList = new LinkedList<>();
         linkedList.add(1);
+        System.out.println(linkedList);
 
         String zifu = "1,2,3,4,5";
         System.out.println(zifu.substring(1));
         System.out.println(zifu.substring(0, zifu.length() - 1));
-        System.out.println(Stream.of(zifu.split(",")).mapToInt(x -> Integer.valueOf(x)).boxed().collect(Collectors.toList()));
-        System.out.println(Stream.of(zifu.split(",")).map(x -> Integer.valueOf(x)).collect(Collectors.toList()));
+        System.out.println(Stream.of(zifu.split(",")).mapToInt(Integer::valueOf).boxed().collect(Collectors.toList()));
+        System.out.println(Stream.of(zifu.split(",")).map(Integer::valueOf).collect(Collectors.toList()));
 
 
         PriorityQueue<Integer> queue = new PriorityQueue<>();
@@ -55,6 +66,18 @@ public class CodeTest {
         queue.add(39);
         System.out.println(queue);
 
+        User user = new User();
+        user.setName("张三");
+        user.setSex("男");
+        user.setAge(12);
 
+        try {
+            User u2 = (User)user.clone();
+            u2.setName("李四");
+            System.out.println(user);
+            System.out.println(u2);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }
