@@ -1,5 +1,7 @@
 package leetcode.tree;
 
+import algorithm.binarytree.BinarySearchTree;
+
 /**
  * 2020-03-25 14:31
  */
