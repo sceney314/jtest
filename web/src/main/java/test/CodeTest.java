@@ -23,6 +23,8 @@ public class CodeTest {
         sp.put("2", "2");
 
 
+        List<Integer> keys = string2List("").stream().map(Integer::new).collect(Collectors.toList());
+
         int i = 3, j = 1;
         System.out.println(~i);
         System.out.println(Integer.toBinaryString(~i));
@@ -79,5 +81,16 @@ public class CodeTest {
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    public static List<String> string2List(String content){
+        return string2List(content, ",");
+    }
+
+    public static List<String> string2List(String content, final String separator){
+        if (content == null || content.trim().length() < 1){
+            return new ArrayList<>();
+        }
+        return Arrays.stream(content.split(separator)).collect(Collectors.toList());
     }
 }

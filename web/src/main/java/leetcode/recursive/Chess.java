@@ -6,6 +6,15 @@ package leetcode.recursive;
  * 2020-03-31 10:41
  */
 public class Chess {
+    /**
+     * 棋盘覆盖
+     *
+     * @param size 棋盘大小
+     * @param jx 奇异点 x 坐标
+     * @param jy 奇异点 y 坐标
+     * @param tag 填充标志
+     * @return int[][]
+     */
     public static int[][] chessBoard(int size, int jx, int jy, int tag) {
 
         if (size == 2) {
@@ -48,13 +57,21 @@ public class Chess {
         }
     }
 
-
+    /**
+     * 合并
+     *
+     * @param A11 分隔后左上模块
+     * @param A12 分隔后右上模块
+     * @param A21 分隔后左下模块
+     * @param A22 分隔后右下模块
+     * @return 合并后数组
+     */
     public static int[][] matrixBlockPlus(int[][] A11, int[][] A12, int[][] A21, int[][] A22) {
         //将A11,A12,A21,A22按照左上，右上，左下，右下的顺序组合成一矩阵。
         if (A11[0].length + A12[0].length != A21[0].length + A22[0].length || A11.length + A21.length != A12.length + A22.length)
             return null;
 
-        int result[][] = new int[A11.length + A21.length][A11[0].length + A12[0].length];
+        int[][] result = new int[A11.length + A21.length][A11[0].length + A12[0].length];
         for (int i = 0; i < A11.length + A21.length; i++){
             for (int j = 0; j < A11[0].length + A12[0].length; j++) {
                 if (i < A11.length) {
@@ -77,7 +94,7 @@ public class Chess {
     }
 
     public static void main(String[] args) {
-        int[][] res = chessBoard(8, 2, 1, 0);
+        int[][] res = chessBoard(5, 2, 1, 0);
         for (int i = 0; i < res.length; i++) {
             for (int j = 0; j < res[i].length; j++) {
                 System.out.printf("%d ", res[i][j]);
