@@ -1,10 +1,5 @@
 package leetcode.tree;
 
-
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-
 /**
  * 111. 二叉树的最小深度
  * <p>
