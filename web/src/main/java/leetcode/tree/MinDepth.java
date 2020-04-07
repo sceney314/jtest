@@ -1,6 +1,10 @@
 package leetcode.tree;
 
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  * 111. 二叉树的最小深度
  * <p>
@@ -19,16 +23,17 @@ public class MinDepth {
         node20.right = node7;
         System.out.println((new MinDepth()).minDepth(node3));
     }
+
     public int minDepth(TreeNode root) {
-        if (root == null){
+        if (root == null) {
             return 0;
         }
 
-        if (root.left == null){
+        if (root.left == null) {
             return 1 + minDepth(root.right);
         }
 
-        if (root.right == null){
+        if (root.right == null) {
             return 1 + minDepth(root.left);
         }
 
