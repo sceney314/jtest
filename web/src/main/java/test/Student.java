@@ -12,4 +12,11 @@ public class Student implements Cloneable{
     protected Object clone() throws CloneNotSupportedException {
         return super.clone();
     }
+
+    public Student() {
+    }
+
+    public Student(String name) {
+        this.name = name;
+    }
 }
