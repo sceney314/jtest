@@ -1,5 +1,6 @@
 package test;
 
+import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.StampedLock;
 
@@ -10,32 +11,61 @@ public class StampedLockTest {
     private static volatile StampedLock lock = new StampedLock();
     public static void main(String[] args) {
         StampedLockTest test = new StampedLockTest();
-        test.test3();
-        System.out.println(Integer.toBinaryString(768));
+//        test.test3();
+        System.out.println(UUID.randomUUID().toString());
     }
 
     private void test2() {
-        long stmp = lock.writeLock();
+
+        long stmp = lock.readLock();
         System.out.println("获取锁:" + stmp);
-        lock.unlockWrite(stmp);
+        lock.unlockRead(stmp);
         System.out.println("释放锁成功");
     }
 
-    private void test3() {
-        for (int i = 1; i < 3; i++){
+    private void test4() {
+        for (int i = 1; i < 256; i++){
             final int k = i;
             Thread t = new Thread(() -> {
                 System.out.println("线程 i:" + k + ", 准备抢锁");
-                long stmp = lock.writeLock();
-                System.out.println("线程 i:" + k + ", success");
+                long stmp = lock.readLock();
+                System.out.println("线程 i:" + k + ", success=" + stmp);
                 try {
                     int i1 = 5;
                     while (i1-- > 0){
-                        Thread.sleep(1000);
+                        Thread.sleep(20);
                     }
                 }catch (Exception e){
                     e.printStackTrace();
                 }
+                lock.unlockRead(stmp);
+            });
+            t.start();
+        }
+    }
+
+    private void test3() {
+        for (int i = 1; i < 1000000; i++){
+            final int k = i;
+            Thread t = new Thread(() -> {
+//                System.out.println("线程 i:" + k + ", 准备抢锁");
+                try {
+                    if(k != 1)
+                        Thread.sleep(20);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+                long stmp = lock.writeLock();
+                if(!Long.toBinaryString(stmp).endsWith("10000000"))
+                System.out.println("线程 i:" + k + ", success, stmp=" + stmp + "," + Long.toBinaryString(stmp));
+//                try {
+//                    int i1 = 1;
+//                    while (i1-- > 0){
+//                        Thread.sleep(20);
+//                    }
+//                }catch (Exception e){
+//                    e.printStackTrace();
+//                }
                 lock.unlockWrite(stmp);
             });
             t.start();

@@ -12,6 +12,20 @@ public class Test {
         for (int n : nums){
             System.out.printf("%d ", n);
         }
+
+        long b = 384;
+
+        System.out.println("");
+        int aa = 1000000000 + 7;
+        System.out.println(Integer.MAX_VALUE);
+        System.out.println(aa);
+
+        System.out.println("");
+        System.out.println(Integer.toBinaryString(256 + 128));
+        System.out.println(Integer.toBinaryString(256 + 128 + 128));
+        String a = Long.toBinaryString(b);
+        System.out.println(a);
+        System.out.println(a.substring(a.length() - 8));
     }
 
     private static void quicSort(int[] nums, int start, int end) {
