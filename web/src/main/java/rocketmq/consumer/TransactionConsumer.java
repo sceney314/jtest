@@ -9,7 +9,7 @@ import org.apache.rocketmq.remoting.common.RemotingHelper;
 
 
 /**
- * 顺序消息消费
+ * 事务消息消费
  */
 public class TransactionConsumer {
     public static void main(String[] args) throws Exception{
@@ -24,27 +24,8 @@ public class TransactionConsumer {
 
         // 注册回调实现类来处理从broker拉取回来的消息
         consumer.registerMessageListener((MessageListenerConcurrently) (msgs, context) -> {
-            int ackIndex = context.getAckIndex();
-            MessageQueue queue = context.getMessageQueue();
-            int delayLevel = context.getDelayLevelWhenNextConsume();
-            System.out.println("ackIndex=" + ackIndex + ", delayLevel=" + delayLevel + ", BrokerName=" + queue.getBrokerName() + ", getTopic=" + queue.getTopic() + ", getQueueId=" + queue.getQueueId());
             for (MessageExt ext : msgs){
-                StringBuilder sb = new StringBuilder();
-                try {
-                    sb.append("msgId=")
-                            .append(ext.getMsgId())
-                            .append("keys=")
-                            .append(ext.getKeys())
-                            .append("transactionId=")
-                            .append(ext.getTransactionId())
-                            .append("msgBody=")
-                            .append(new String(ext.getBody(), RemotingHelper.DEFAULT_CHARSET));
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
                 System.out.println("消息:" + ext);
-                System.out.println("人为解析消息:" + sb.toString());
-                System.out.println("");
             }
 
             // 标记该消息已经被成功消费
