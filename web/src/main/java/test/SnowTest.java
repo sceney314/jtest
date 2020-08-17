@@ -1,6 +1,5 @@
 package test;
 
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
@@ -9,7 +8,6 @@ import java.util.concurrent.atomic.AtomicLong;
  * 2020-07-09 11:25
  */
 public class SnowTest {
-    private long epoch = System.nanoTime();
 
     private static final long autoBits = (1 << 27) - 1;
 
@@ -48,8 +46,5 @@ public class SnowTest {
 
         return  (tbit << timeShift) | (id << workerIdShift) | (offset);
     }
-
-
-
 
 }

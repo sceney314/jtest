@@ -23,7 +23,7 @@ public class OrderProducer {
         producer.start();
 
         // 发送消息
-        for(int i = 11; i < 16; i++){
+        for(int i = 110; i < 116; i++){
             Message msg = new Message("OrderMsgTopic", "order",  "order-Id:" + i, "Hello rocket mq!".getBytes(RemotingHelper.DEFAULT_CHARSET));
             SendResult result = producer.send(msg, (mqs, msg1, arg) -> {
                 // 消息队列选择标识

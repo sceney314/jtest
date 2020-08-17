@@ -31,8 +31,10 @@ public class TransactionProducer {
 
         // 设置周期调用
         producer.setExecutorService(executorService);
+
         // 设置监听器
         producer.setTransactionListener(listener);
+
         //生产者启动
         producer.start();
 

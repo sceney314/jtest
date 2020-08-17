@@ -1,6 +1,7 @@
 package test;
 
 
+import lombok.Data;
 import org.openjdk.jol.info.ClassLayout;
 
 /**
@@ -22,7 +23,7 @@ public class LeanTest {
             System.out.println("a != b");
         }
 
-        String s = new String("s");
+        String s = new String("ABCDEFGHIJK");
         String ss = "s";
 
         Object o = new Object();
@@ -37,10 +38,25 @@ public class LeanTest {
         System.out.println(ClassLayout.parseInstance(s).toPrintable());
         System.out.println("-------char");
         System.out.println(ClassLayout.parseInstance('a').toPrintable());
+
+        People p = new People();
+        p.setAddr("sds");
+        p.setName("张三");
+        p.setAge(12);
+        System.out.println(ClassLayout.parseInstance(p).toPrintable());
     }
 
 
 
+}
+
+@Data
+class People{
+    private int age;
+
+    private String name;
+
+    private String addr;
 }
 
 class SuperClass{

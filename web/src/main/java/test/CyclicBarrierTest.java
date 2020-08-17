@@ -1,8 +1,5 @@
 package test;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.TimeUnit;
@@ -11,8 +8,6 @@ import java.util.concurrent.TimeUnit;
  * 2020-07-02 10:54
  */
 public class CyclicBarrierTest {
-
-
     public static void main(String[] args) {
         CyclicBarrierTest test = new CyclicBarrierTest();
         test.test();

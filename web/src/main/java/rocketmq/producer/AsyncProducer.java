@@ -24,7 +24,7 @@ public class AsyncProducer {
         producer.setRetryTimesWhenSendAsyncFailed(1);
 
         // 发送消息
-        for (int i = 1; i < 5; i++){
+        for (int i = 10; i < 15; i++){
             Message msg = new Message("AsyncTopicTest", "async",  "orderId:" + i, "Hello rocket async mq 2!".getBytes(RemotingHelper.DEFAULT_CHARSET));
             producer.send(msg, new SendCallback() {
                 @Override
