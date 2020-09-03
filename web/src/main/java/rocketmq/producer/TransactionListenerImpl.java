@@ -14,7 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * Copyright (C), 2015-2020
  */
 public class TransactionListenerImpl implements TransactionListener {
-    private ConcurrentHashMap<String, Integer> localTrans = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<String, Integer> localTrans = new ConcurrentHashMap<>();
 
     // 当发送半消息成功时，我们使用 executeLocalTransaction 方法来执行本地事务。它返回前一节中提到的三个事务状态之一。
     @Override

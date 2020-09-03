@@ -7,12 +7,17 @@ package test;
 public class ALTest {
 
     public static void main(String[] args) {
-        int a = 14437785, end = 20_0000, start = 0;
-        while (end < a){
-            System.out.println("UPDATE `t_loan_info` SET last_debt_type=proto_type WHERE id > " + start + " AND id <= " + end + ";");
-            start = end;
-            end += 20_0000;
+        boolean r = true;
+        int i = 100;
+        while (i-- > 0){
+            if ((System.currentTimeMillis() & 1) == 1){
+                r = r && true;
+            }else {
+                r &= false;
+                System.out.println("最终是false");
+            }
         }
+        System.out.println(r);
     }
 
 }
